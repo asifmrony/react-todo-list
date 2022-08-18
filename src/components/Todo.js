@@ -1,6 +1,7 @@
 import React from 'react';
-import { IoIosNotificationsOutline } from 'react-icons/io'
-import { IconContext } from 'react-icons'
+import { IconContext } from 'react-icons';
+import { IoIosNotificationsOutline } from 'react-icons/io';
+import { IoTrashOutline } from 'react-icons/io5';
 
 function Todo({ todo }) {
   return (
@@ -12,9 +13,12 @@ function Todo({ todo }) {
                 <p>{todo.date}</p>
             </div>
         </div>
-        <div>
-            <IconContext.Provider value={{ className: "text-3xl bg-gray-600 rounded-full color-white cursor-pointer hover:bg-[#005CC8] hover:ring-offset-2 hover:ring-offset-[#005CC8] ring-2 ring-[#005CC8]"}}>
+        <div className='flex space-x-3'>
+            <IconContext.Provider value={{ className: "text-3xl bg-transparent rounded-full fill-blue-500 p-1 hover:fill-white hover:p-0 cursor-pointer hover:bg-[#005CC8] hover:ring-offset-2 hover:ring-offset-[#005CC8] ring-2 ring-[#005CC8]"}}>
                 <IoIosNotificationsOutline />
+            </IconContext.Provider>
+            <IconContext.Provider value={{ className: "text-3xl bg-transparent rounded-full stroke-red-600 p-1 hover:stroke-white hover:p-0 cursor-pointer hover:bg-red-600 hover:ring-offset-2 hover:ring-offset-red-600 ring-2 ring-red-600"}}>
+                <IoTrashOutline />
             </IconContext.Provider>
         </div>
     </div>
