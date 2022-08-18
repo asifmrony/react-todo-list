@@ -3,7 +3,7 @@ import { IconContext } from 'react-icons';
 import { IoIosNotificationsOutline } from 'react-icons/io';
 import { IoTrashOutline } from 'react-icons/io5';
 
-function Todo({ todo }) {
+function Todo({ todo, onDelete, onToggle }) {
   return (
     <div className="todo shadow-lg rounded-lg py-3 px-7 flex justify-between items-center border border-gray-400 mt-4">
         <div className="todo__content flex items-center space-x-7">
@@ -14,11 +14,12 @@ function Todo({ todo }) {
             </div>
         </div>
         <div className='flex space-x-3'>
-            <IconContext.Provider value={{ className: "text-3xl bg-transparent rounded-full fill-blue-500 p-1 hover:fill-white hover:p-0 cursor-pointer hover:bg-[#005CC8] hover:ring-offset-2 hover:ring-offset-[#005CC8] ring-2 ring-[#005CC8]"}}>
-                <IoIosNotificationsOutline />
+            <IconContext.Provider value={{ className: `text-3xl bg-transparent rounded-full fill-blue-500 p-1 hover:fill-white hover:p-0 cursor-pointer hover:bg-[#005CC8] hover:ring-offset-2 hover:ring-offset-[#005CC8] ring-2 ring-[#005CC8] ${todo.remainder ? 'p-0 fill-white bg-[#005CC8] ring-offset-2 ring-offset-[#005CC8]' : ''}`}}>
+                <IoIosNotificationsOutline onDoubleClick={() => onToggle(todo.id)} />
+                {/* {todo.remainder ? className="fill-white bg-[#005CC8] ring-offset-2 ring-offset-[#005CC8]" } */}
             </IconContext.Provider>
             <IconContext.Provider value={{ className: "text-3xl bg-transparent rounded-full stroke-red-600 p-1 hover:stroke-white hover:p-0 cursor-pointer hover:bg-red-600 hover:ring-offset-2 hover:ring-offset-red-600 ring-2 ring-red-600"}}>
-                <IoTrashOutline />
+                <IoTrashOutline onClick={() => onDelete(todo.id)} />
             </IconContext.Provider>
         </div>
     </div>
