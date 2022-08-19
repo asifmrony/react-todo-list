@@ -39,6 +39,13 @@ function App() {
     }
   ]); 
 
+  // Add Task
+  const addTodo = (task) => {
+    const id = Math.floor(Math.random() * 10000);
+    const newTodo = {id, ...task}
+    setTodos([...todos, newTodo])
+  }
+
   // Delete Todo
   const deleteTodo = (id) => {
     // console.log('delete', id);
@@ -59,7 +66,7 @@ function App() {
         {/* blank todo add button */}
         {todos.length < 1 && <TodoAdd />}
         {/* Todo Popup add form */}
-        <AddTodo />
+        <AddTodo onAdd = {addTodo} />
         <div className="todos space-y-4 h-[383px] max-h-[574px] overflow-x-hidden overflow-y-auto pr-4">
           <Todos todos = {todos} onDelete = {deleteTodo} onToggle ={toggleRemainder}/>          
         </div>
