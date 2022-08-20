@@ -6,6 +6,7 @@ import Todos from "./components/Todos";
 import AddTodo from "./components/AddTodo";
 
 function App() {
+  const [openModal, setOpenModal] = useState(false);
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -62,11 +63,13 @@ function App() {
     <div className="container mx-auto w-1/2 bg-[#28282B] text-white">
       {/* Header Container */}
       <Header />
-      <div className="main p-5 min-h-screen app-main">
+      <div className="main p-5 relative">
         {/* blank todo add button */}
-        {todos.length < 1 && <TodoAdd />}
+        <div className="add-todos-btn-container">
+          <TodoAdd openModal = {setOpenModal} />
+        </div>
         {/* Todo Popup add form */}
-        <AddTodo onAdd = {addTodo} />
+        {openModal && <AddTodo onAdd = {addTodo} closeModal = {setOpenModal}/>}
         <div className="todos space-y-4 h-[383px] max-h-[574px] overflow-x-hidden overflow-y-auto pr-4">
           <Todos todos = {todos} onDelete = {deleteTodo} onToggle ={toggleRemainder}/>          
         </div>
