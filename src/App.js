@@ -70,10 +70,11 @@ function App() {
         </div>
         {/* Todo Popup add form */}
         {openModal && <AddTodo onAdd = {addTodo} closeModal = {setOpenModal}/>}
-        <div className="todos space-y-4 h-[383px] max-h-[574px] overflow-x-hidden overflow-y-auto pr-4">
+        <div className="todos space-y-4 h-[215px] max-h-[574px] overflow-x-hidden overflow-y-auto pr-4">
           <Todos todos = {todos} onDelete = {deleteTodo} onToggle ={toggleRemainder}/>          
         </div>
         <div className="mt-5 w-full h-[1px] bg-gray-700"></div>
+        <h4>Finished Todos'</h4>
         {/* FInished Todos will be here */}
         {/* <div className="finished-todos space-y-4 overflow-x-hidden overflow-y-auto">
           <Todos todos = {todos}/>

@@ -1,4 +1,5 @@
-.add-todos-btn-container {
+.main {
+    min-height: calc(100vh - 74px);
 }
 
 .todo-add {
