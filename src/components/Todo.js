@@ -3,11 +3,11 @@ import { IconContext } from 'react-icons';
 import { IoIosNotificationsOutline } from 'react-icons/io';
 import { IoTrashOutline } from 'react-icons/io5';
 
-function Todo({ todo, onDelete, onToggle }) {
+function Todo({ todo, onDelete, onToggle, onFinishedTodos }) {
   return (
     <div className="todo shadow-lg rounded-lg py-3 px-7 flex justify-between items-center border border-gray-400 mt-4">
         <div className="todo__content flex items-center space-x-7">
-            <input className='w-5 h-5' type="checkbox" name="" id="" />
+            <input className='w-5 h-5' type="checkbox" name="" id="" onChange={() => onFinishedTodos(todo.id)} />
             <div>
                 <h3>{todo.title}</h3>
                 <p>{todo.date}</p>
